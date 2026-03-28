@@ -59,8 +59,6 @@ When the agent is triggered, it follows these steps:
 
 ---
 
-## 🖼️ System Flow
-
 ![Research Agent Workflow](./image-1.png)
 
 ---
