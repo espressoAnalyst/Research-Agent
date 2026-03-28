@@ -1,49 +1,83 @@
-# Autonomous Research Agent 🚀
+# 🔍 Research Agent
 
-An autonomous AI research agent built using **LangChain**, **Groq** (LLaMA 3), and web search tools. The agent takes a topic, autonomously decides what to research, gathers information from the live web and Wikipedia, and synthesizes its findings into a highly structured, 7-part Markdown report — all in under 60 seconds.
+An AI-powered **Research Agent** that autonomously explores a given topic and generates a well-structured report in seconds. Built using **LangChain** and **Groq (LLaMA 3)**, the system gathers information from live web sources and Wikipedia, then converts it into a clean Markdown report.
+
+This project demonstrates automated research on topics like **Lithium Batteries**, combining real-time insights with foundational knowledge.
+
+---
 
 ## 🌟 Features
-- **ReAct Agent Architecture**: Uses LangChain's LangGraph-based `create_agent` API to think, act, and observe in an autonomous loop.
-- **Dual Tool Integration**: 
-  - 🌐 *Tavily Web Search*: For recent trends, expert opinions, and live developments.
-  - 📚 *Wikipedia API*: For foundational background, history, and definitions.
-- **Custom Tool Truncation**: Wraps all API responses to safely truncate output, staying heavily within free-tier Groq API TPM (Tokens Per Minute) limits.
-- **Two-Stage Pipeline**:
-  1. *Research Phase*: The agent autonomously researches and collects unformatted raw notes.
-  2. *Synthesis Phase*: A dedicated Report Generator LLM chain formats those notes into a strict 7-section Markdown report.
-- **Deep Visibility**: Custom LangChain callback handlers (`on_tool_start`) trace every agent decision, tool use, and search query directly to the terminal.
+
+- **Autonomous Reasoning Agent**  
+  Uses a ReAct-style architecture to think, act, and refine results in an intelligent loop.
+
+- **Multiple Data Sources**
+  - 🌐 *Tavily Search*: Retrieves latest updates, trends, and real-world insights  
+  - 📚 *Wikipedia API*: Provides reliable background and core concepts  
+
+- **Optimized Token Usage**  
+  Smart truncation ensures responses stay within API limits while preserving useful data.
+
+- **Two-Step Processing Pipeline**
+  1. **Research Phase** – Collects raw, unstructured information  
+  2. **Synthesis Phase** – Converts data into a structured report  
+
+- **Execution Transparency**  
+  Logs all actions, queries, and tool calls for better debugging and understanding.
+
+---
 
 ## 🛠️ Tech Stack
-- **Python 3.12**
-- **LangChain Core & Community**
-- **Groq API** (`llama-3.1-8b-instant` for ultra-fast reasoning & formatting)
-- **Tavily Search API**
-- **Wikipedia API**
-- **Pytest** (For automated testing and 60-second SLA latency validation)
 
-## ⚙️ How It Works (The Background Process)
-When you trigger the research agent, it follows a rigorous autonomous workflow:
-1. **Initial Thought (`🧠 thinking...`)**: The agent analyzes the problem statement to determine what foundational and current information is needed.
-2. **Action & Tool Execution (`🔍 crawling...` / `📚 extracting...`)**: It dynamically creates queries. For example, it might hit Wikipedia for "History of Quantum Computing," and simultaneously hit Tavily for "Current Quantum AI Breakthroughs 2025."
-3. **Observation & Iteration**: It reads the raw tool outputs and decides if its knowledge base is comprehensive. It will repeat steps 1 and 2 up to 3 max iterations.
-4. **Synthesis (`💭 analyzing findings...`)**: Once the agent is satisfied, it halts the search loop and exports its aggregated raw notes.
-5. **Report Generation (`📝 writing final structured report...`)**: A secondary formatting LLM reads the raw notes, strips conversational filler, and constructs the final Markdown file.
+- Python 3.12  
+- LangChain (Core + Community)  
+- Groq API (`llama-3.1-8b-instant`)  
+- Tavily Search API  
+- Wikipedia API  
+- Pytest (for testing and performance validation)  
 
-<br>
-<div align="center">
-  <img src="./image-1.png" alt="Agent Background Process" width="800">
-</div>
-<br>
+---
 
-## 📝 Generated Output (`research_report.md`)
-The output is always saved safely to disk as a markdown file, successfully bypassing LLM "hallucination" by strictly extracting sources from the raw tool text. It adheres perfectly to the required 7-section assignment format:
-1. **Cover Page** (With Topic & Date)
-2. **Title**
-3. **Introduction**
-4. **Key Findings**
-5. **Challenges**
-6. **Future Scope**
-7. **References** (Direct URL attribution)
+## ⚙️ Workflow
+
+When the agent is triggered, it follows these steps:
+
+1. **Understanding the Query (`🧠 thinking...`)**  
+   Interprets the topic (e.g., Lithium Batteries) and identifies required information.
+
+2. **Data Collection (`🔍 searching...` / `📚 extracting...`)**  
+   Generates queries and fetches results from web and Wikipedia sources.
+
+3. **Iterative Refinement**  
+   Repeats the process until enough relevant information is gathered.
+
+4. **Processing Insights (`💭 analyzing...`)**  
+   Organizes and filters collected data.
+
+5. **Report Generation (`📝 generating report...`)**  
+   Produces a structured Markdown report.
+
+---
+
+## 🖼️ System Flow
+
+![Research Agent Workflow](./image-1.png)
+
+---
+
+## 📝 Output (`research_report.md`)
+
+The generated report includes:
+
+1. **Title & Topic Details**  
+2. **Introduction**  
+3. **Key Insights**  
+4. **Challenges**  
+5. **Future Scope**  
+6. **Conclusion**  
+7. **References (with source links)**  
+
+---
 
 ## 🚀 Getting Started
 
